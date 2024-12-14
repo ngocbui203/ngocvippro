@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trường Phép Thuật Hogwarts</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('https://dientungaynay.vn/sites/default/files/styles/img_noidung/public/linhntd2/hp-hogwarts-39photobu17074_phup_hp.jpg?itok=9ZwozUMr');
+      background-size: cover;
+      background-attachment: fixed;
+      color: white;
+    }
+    header {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+    }
+    header video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .marquee-container {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      background: rgb(84 77 77 / 0%);
+      overflow: hidden;
+      white-space: nowrap;
+      z-index: 1;
+    }
+    .marquee {
+      display: inline-block;
+      padding: 15px 0;
+      color: #FFD700;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      animation: marquee 15s linear infinite;
+      will-change: transform;
+    }
+    @keyframes marquee {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    nav {
+      background: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #FFD700;
+    }
+    section {
+      padding: 80px;
+      background: rgba(0, 0, 0, 0.8);
+      margin: 20px auto;
+      max-width: 1200px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    section p {
+      text-align: left;
+      line-height: 1.8;
+    }
+    h2, h3 {
+      text-align: center;
+      color: #FFD700;
+      text-shadow: 1px 1px 3px #000;
+    }
+    .teacher-student {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+    }
+    .profile {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 300px;
+      color: white;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .profile:hover {
+      transform: translateY(-10px); /* Nổi lên khi hover */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ khi hover */
+    }
+    .profile img {
+      width: 100%;
+      border-radius: 50%;
+      border: 2px solid #FFD700;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Hiệu ứng phát sáng khi hover */
+    .profile:hover img {
+      transform: scale(1.1); /* Phóng to ảnh khi hover */
+      box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.8); /* Phát sáng vàng */
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.9);
+      color: #FFD700;
+      position: relative;
+    }
+    .back-to-top {
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+      text-decoration: none;
+      color: #FFD700;
+      font-weight: bold;
+      border: 2px solid #FFD700;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .back-to-top:hover {
+      background-color: #FFD700;
+      color: black;
+    }
+    /* Form đăng ký tuyển sinh */
+    .registration-form {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 40px;
+      margin: 20px auto;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    .registration-form h3 {
+      color: #FFD700;
+      text-align: center;
+    }
+    .registration-form input, .registration-form select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 1px solid #FFD700;
+      border-radius: 5px;
+      color: white;
+    }
+    .registration-form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #FFD700;
+      border: none;
+      color: black;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .registration-form button:hover {
+      background-color: #ffcc00;
+    }
+
+    /* Khung chat */
+    #chat {
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.8);
+      margin-top: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      color: white;
+    }
+    .chat-container {
+      display: flex;
+      justify-content: center;
+    }
+    .chat-box {
+      width: 100%;
+      max-width: 600px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+    .chat-header {
+      background-color: #FFD700;
+      padding: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .chat-content {
+      padding: 10px;
+      max-height: 300px;
+      overflow-y: auto;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    .chat-message {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .system-message {
+      background-color: #FFD700;
+      color: black;
+      text-align: center;
+      font-weight: bold;
+    }
+    .chat-input {
+      width: 96.5%;
+      padding: 10px;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 16px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    .chat-send {
+      width: 100%;
+      padding: 10px;
+      background-color: #FFD700;
+      color: black;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      transition: background-color 0.3s;
+    }
+    .chat-send:hover {
+      background-color: #ffcc00;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="marquee-container">
+      <div class="marquee">Chào Mừng Đến Với Hogwarts! Hãy Khám Phá Thế Giới Phép Thuật!</div>
+    </div>
+    <video autoplay loop muted>
+      <source src="http://localhost/school-website/mp4.mp4" type="video/mp4">
+      Trình duyệt của bạn không hỗ trợ video.
+    </video>
+  </header>
+
+  <nav>
+    <a href="#about">Giới Thiệu</a>
+    <a href="#courses">Khối Học</a>
+    <a href="#teachers">Giáo Viên</a>
+    <a href="#students">Học Sinh</a>
+    <a href="#contact">Liên Hệ</a>
+    <a href="#registration">Đăng ký</a>
+    <a href="#chat"> báo cáo </a>
+  </nav>
+
+  <section id="about">
+    <h2>Giới Thiệu</h2>
+    <p>Trường Hogwarts là ngôi trường phù thủy danh tiếng trong thế giới phép thuật, nơi đào tạo các phù thủy trẻ tuổi từ 11 đến 17 tuổi. Tọa lạc trong một lâu đài cổ kính, trường được bao quanh bởi những phong cảnh hùng vĩ và được bảo vệ bởi nhiều bùa chú mạnh mẽ.</p>
+    <p>Học sinh tại đây được chia vào bốn nhà: Gryffindor, Hufflepuff, Ravenclaw và Slytherin, tượng trưng cho các phẩm chất như dũng cảm, trung thành, thông thái và tham vọng. Với chương trình giảng dạy đa dạng gồm các môn như Phòng Chống Nghệ Thuật Hắc Ám, Bùa Chú và Biến Hình, Hogwarts không chỉ là nơi học tập mà còn là mái nhà cho những cuộc phiêu lưu, tình bạn và những bài học ý nghĩa trong cuộc sống.</p>
+  </section>
+
+  <section id="courses">
+    <h2>Khối Học</h2>
+    <p><strong>Gryffindor:</strong> Gryffindor coi trọng lòng dũng cảm, sự can đảm và tinh thần hiệp sĩ...</p>
+    <p><strong>Hufflepuff:</strong> Hufflepuff coi trọng sự chăm chỉ, kiên nhẫn, công lý và lòng trung thành...</p>
+    <p><strong>Ravenclaw:</strong> Ravenclaw coi trọng trí thông minh, học vấn, trí tuệ và sự dí dỏm...</p>
+    <p><strong>Slytherin:</strong> Slytherin coi trọng tham vọng, sự xảo quyệt, khả năng lãnh đạo và sự tháo vát...</p>
+  </section>
+
+  <section id="teachers">
+    <h2>Giáo Viên Nổi Bật</h2>
+    <div class="teacher-student">
+      <div class="profile">
+        <img src="http://localhost/school-website/tải xuống (12).jpg" alt= "Albus Dumbledore">
+        <h3>Albus Dumbledore</h3>
+        <p>Hiệu trưởng vĩ đại của Hogwarts, nổi tiếng với trí tuệ và lòng dũng cảm .</p>
+      </div>
+      <div class="profile">
+        <img src="http://localhost/school-website/tải xuống (11).jpg"alt="Minerva McGonagall">
+        <h3>Minerva McGonagall</h3>
+        <p>Giáo sư Biến Hình và Trưởng nhà Gryffindor.</p>
+      </div>
+      <div class="profile">
+         <img src="http://localhost/school-website/tải xuống (5).jpg" alt="Severus Snape">
+        <h3>Severus Snape</h3>
+        <p>Giáo sư Độc Dược và Trưởng nhà Slytherin.</p>
+      </div>
+      <div class="profile">
+         <img src="http://localhost/school-website/tải xuống (6).jpg" alt="Rubeus Hagrid">
+        <h3>Rubeus Hagrid</h3>
+        <p>Giáo viên môn Chăm sóc Sinh vật Huyền Bí, người bảo vệ các sinh vật kỳ lạ.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="students">
+    <h2>Học Sinh Nổi Bật</h2>
+    <div class="teacher-student">
+      <div class="profile">
+        <img src="http://localhost/school-website/tải xuống (7).jpg" alt="Harry Potter">
+        <h3>Harry Potter</h3>
+        <p>Học sinh nhà Gryffindor, nổi tiếng với việc đánh bại Voldemort.</p>
+      </div>
+      <div class="profile">
+        <img src="http://localhost/school-website/tải xuống (9).jpg" alt="Cedric Diggory">
+        <h3>Cedric Diggory</h3>
+        <p>Hufflepuff: Trung thực, công bằng và luôn chăm chỉ làm việc hết mình.</p>
+      </div>
+      <div class="profile">
+       <img src="http://localhost/school-website/tải xuống (8).jpg"  alt="Draco Malfoy">
+        <h3>Draco Malfoy</h3>
+        <p>hoc sinh nhà Slytherin: một phù thủy tài năng nhưng đầy tham vọng </p>
+      </div>
+      <div class="profile">
+        <img src="http://localhost/school-website/tải xuống (10).jpg" alt="Luna Lovegood">
+        <h3>Luna Lovegood</h3>
+        <p>Học sinh nhà Ravenclaw được biết đến với trí tuệ sắc sảo, sự sáng tạo và tinh thần học hỏi không ngừng.</p>
+      </div>
+    </div>
+ <section id="contact">
+  <h2>Liên Hệ</h2>
+  <p>Địa chỉ: Northumberland, Anh</p>
+  <p>Email: info@hogwarts.edu</p>
+  <p>Hotline: +44-123-456-789</p>
+  <p><strong>Giờ Hoạt Động:</strong> Thứ Hai đến Thứ Sáu</p>
+  <p><strong>Giờ Mở Cửa:</strong> 8:00 AM</p>
+  <p><strong>Giờ Đóng Cửa:</strong> 5:00 PM</p>
+  
+  <!-- Thêm phần hiển thị đồng hồ đếm ngược -->
+  <p><strong>Thời Gian Còn Lại Đến Giờ Mở Cửa/Đóng Cửa:</strong></p>
+  <div id="countdown"></div>
+</section>
+
+<script>
+  // Thời gian mở cửa là 8:00 AM và đóng cửa là 5:00 PM (cập nhật theo giờ của bạn)
+  function updateCountdown() {
+    const now = new Date();
+    const currentTime = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds(); // thời gian hiện tại tính bằng giây
+
+    // Giờ mở cửa: 8:00 AM
+    const openingTime = 8 * 3600; // 8:00 AM = 8 * 3600 giây
+
+    // Giờ đóng cửa: 5:00 PM
+    const closingTime = 17 * 3600; // 5:00 PM = 17 * 3600 giây
+
+    let timeLeft = 0;
+    let status = "";
+    
+    // Kiểm tra thời gian còn lại để trường mở cửa hay đóng cửa
+    if (currentTime < openingTime) {
+      timeLeft = openingTime - currentTime;
+      status = "đến giờ mở cửa";
+    } else if (currentTime >= openingTime && currentTime < closingTime) {
+      timeLeft = closingTime - currentTime;
+      status = "đến giờ đóng cửa";
+    } else {
+      // Nếu đã qua giờ đóng cửa, tính toán thời gian còn lại cho ngày mai
+      timeLeft = (24 * 3600) - currentTime + openingTime;
+      status = "đến giờ mở cửa ngày mai";
+    }
+
+    // Tính toán số giờ, phút và giây
+    const hours = Math.floor(timeLeft / 3600);
+    const minutes = Math.floor((timeLeft % 3600) / 60);
+    const seconds = timeLeft % 60;
+
+    // Cập nhật đồng hồ đếm ngược trên giao diện
+    document.getElementById('countdown').innerHTML = `Còn lại: ${hours} giờ ${minutes} phút ${seconds} giây ${status}`;
+  }
+
+  // Cập nhật đồng hồ đếm ngược mỗi giây
+  setInterval(updateCountdown, 1000);
+
+  // Lần đầu tiên cập nhật ngay lập tức
+  updateCountdown();
+</script>
+
+
+
+  <!-- Đăng ký tuyển sinh -->
+  <section id="registration">
+    <h2>Đăng Ký Tuyển Sinh</h2>
+    <div class="registration-form">
+      <h3>Hãy gia nhập Hogwarts ngay hôm nay!</h3>
+      <form action="#" method="post">
+        <label for="name">Họ và tên:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="age">Tuổi:</label>
+        <input type="number" id="age" name="age" required min="11" max="17">
+        
+        <label for="house">Chọn Nhà:</label>
+        <select id="house" name="house" required>
+          <option value="gryffindor"> Gryffindor</option>
+          <option value="hufflepuff"> Hufflepuff</option>
+          <option value="ravenclaw"> Ravenclaw</option>
+          <option value="slytherin"> Slytherin</option>
+        </select>
+        
+        <label for="parent-email">Email :</label>
+        <input type="email" id="parent-email" name="parent-email" required>
+        
+        <button type="submit">Đăng Ký</button>
+      </form>
+    </div>
+  </section>
+<section id="chat">
+    <h2>Chat Với Nhà Trường</h2>
+    <div class="chat-container">
+      <div class="chat-box">
+        <div class="chat-header">
+          <h3>Chat Với Hogwarts</h3>
+        </div>
+        <div class="chat-content">
+          <div class="chat-message system-message">Chào bạn! Cần sự trợ giúp gì từ Hogwarts hôm nay?</div>
+        </div>
+        <input type="text" class="chat-input" placeholder="Nhập câu hỏi hoặc yêu cầu của bạn..." id="user-message">
+        <button class="chat-send" onclick="sendMessage()">Gửi</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Trường Trung Học Phổ Thông Hogwarts</p>
+    <a href="#top" class="back-to-top">Quay Về Đầu Trang</a>
+  </footer>
+
+  <script>
+    // JavaScript để xử lý tin nhắn chat
+    function sendMessage() {
+      const userMessage = document.getElementById("user-message").value;
+      const chatContent = document.querySelector(".chat-content");
+
+      if (userMessage.trim() !== "") {
+        // Hiển thị tin nhắn của người dùng
+        const userMessageElement = document.createElement("div");
+        userMessageElement.classList.add("chat-message");
+        userMessageElement.textContent = "Bạn: " + userMessage;
+        chatContent.appendChild(userMessageElement);
+
+        // Tạo một tin nhắn hệ thống trả lời (có thể thay thế bằng AI hoặc thông điệp tự động)
+        const systemMessageElement = document.createElement("div");
+        systemMessageElement.classList.add("chat-message", "system-message");
+        systemMessageElement.textContent = "Hogwarts: Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.";
+        chatContent.appendChild(systemMessageElement);
+
+        // Cuộn xuống cuối tin nhắn
+        chatContent.scrollTop = chatContent.scrollHeight;
+
+        // Xóa ô nhập liệu
+        document.getElementById("user-message").value = "";
+      }
+    }
+  </script>
+
+</body>
+</html>x
